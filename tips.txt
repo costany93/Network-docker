@@ -1,0 +1,14 @@
+## il existe 3 facon de pouvoir faire communiquer un container avec l'exterieur
+## la bonne pratique nous dit que nous devant utiliser des conteneur differents pour chaque partie de l'application ex: front-end, backend, base de données dans differents container
+## 1- La communication entre le container et le web ou encore une api web disponible en ligne
+## 2- la coomunication entre le container et notre machine local ou encore notre serveur
+## 3- la communication entre le container et un autre container
+
+## On peut envoyer les requetes a l'exterieur de notre conteneur dans une commununication container - wbe sans faire une configuration particuliere dans notre docker
+
+# Pour la coomunication entre ton container et ta machine local ou ton serveur il faut remplacer domaine de localhost par le domaine special host.docker.internal qui est une instruction que docker comprend afin de pouvoir creer la communication 
+
+
+## Solution 1 dans le cadre d'une communication container via container ce que nous devons faire c'est de recuperer l'adresse Ip de chaque container afin de pouvoir lancer la communication, la commande docker container inspect nomContainer sous la rubrique networt et le nom IpAdress
+
+## solution 2 placer les containers dans un meme network et utiliser le nom de chaque container a la place du localhost afin que docker traduise ce nom en adresse ip du container qu'on veut consulter
